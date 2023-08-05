@@ -1,4 +1,4 @@
-import styles from '../../styles/styles.module.css';
+import styles from './component-styles.module.css';
 
 export default function Footer() {
   const COPYRIGHT_YEAR = new Date().getFullYear();

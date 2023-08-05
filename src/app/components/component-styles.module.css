@@ -24,20 +24,6 @@
   color: rgba(153, 153, 153, 1);
 }
 
-.homeContainer {
-  text-align: center;
-  max-width: var(--max-width-container);
-  padding: 182px 0px 0px;
-}
-
-.subtitle {
-  color: rgba(33, 33, 33, 0.6);
-  font-size: 24px;
-  font-weight: 500;
-  line-height: 28px;
-  margin-top: 1.5rem;
-}
-
 .inputSearchContainer {
   margin: 64px auto;
   border-radius: 100px;
@@ -74,25 +60,16 @@
 .inputSearch::placeholder {
   color: rgba(249, 154, 153, 0.8);
 }
+
 /* ------------------------Mobile-------------------------- */
 
 @media (max-width: 700px) {
-  .homeContainer {
-    text-align: left;
-    padding: 60px 24px 0px;
-  }
-
-  .subtitle {
-    font-size: 1rem;
-    line-height: 20px;
-  }
-
   .inputSearchContainer {
     margin: 32px auto;
   }
 
   .inputSearchWrapper {
-    padding: 22px 24px;
+    padding: 16px 24px;
   }
 
   .inputSearch {

@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import styles from '../../styles/styles.module.css';
+import styles from './component-styles.module.css';
 import searchIcon from '../../assets/icons/search-icon.svg';
 
 export default function SearchInput() {
