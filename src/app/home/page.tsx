@@ -1,5 +1,6 @@
-import styles from '../../styles/styles.module.css';
+import styles from './home-styles.module.css';
 import SearchInput from '../components/search-input';
+import CharactersSection from './characters-section/characters-section';
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
         generosa porção de heróis e vilões!
       </p>
       <SearchInput />
+      <CharactersSection />
     </section>
   );
 }
