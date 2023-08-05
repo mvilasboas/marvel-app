@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import styles from './component-styles.module.css';
-import searchIcon from '../../assets/icons/search-icon.svg';
+import searchIcon from '../assets/icons/search-icon.svg';
 
 export default function SearchInput() {
   const handleChange = (event: React.FormEvent<HTMLInputElement>) => {

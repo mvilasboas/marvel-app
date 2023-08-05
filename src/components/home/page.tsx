@@ -1,8 +1,17 @@
 import styles from './home-styles.module.css';
-import SearchInput from '../components/search-input';
+import SearchInput from '../search-input';
 import CharactersSection from './characters-section/characters-section';
 
 export default function Home() {
+  // async function getMemberInfo(member) {
+  //   try {
+  //     const res = await fetch(`${baseAPI_URL}/users/${member}`);
+  //     renderInfoPanel(await res.json());
+  //   } catch (error) {
+  //     console.error(`Falha na requisição de getMemberInfo(): ${error.message}`);
+  //   }
+  // }
+
   return (
     <section className={styles.homeContainer}>
       <h1>EXPLORE O UNIVERSO E CRIE SUA EQUIPE</h1>
