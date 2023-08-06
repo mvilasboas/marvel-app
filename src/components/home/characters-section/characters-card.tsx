@@ -2,8 +2,13 @@ import Image from 'next/image';
 import iconHeart from '../../../assets/icons/heart-icon.svg';
 import iconFilledHeart from '../../../assets/icons/filled-heart-icon.svg';
 import styles from './characters-styles.module.css';
+import { ICharacter } from '@/types/marvel';
 
-export default function CharactersCard() {
+interface CharactersCardProps {
+  character: ICharacter;
+}
+
+export default function CharactersCard({ character }: CharactersCardProps) {
   const setFavorite = () => {
     console.log('Favoritado');
   };
@@ -15,20 +20,23 @@ export default function CharactersCard() {
 
   return (
     <div className={styles.card}>
-      <Image src={iconHeart} alt="Nome do personagem" className={styles.cardImg} />
+      <Image
+        src={`${character?.thumbnail?.path}.${character?.thumbnail?.extension}`}
+        alt={`Imagem do ${character.name}`}
+        width={200}
+        height={100}
+        className={styles.cardImg}
+      />
       <div className={styles.wrapper}>
-        <span className={styles.charLabel}>Nome do herói</span>
+        <span className={styles.charLabel}>{character.name}</span>
         <Image
-          src={statusIcon["favorite"]}
+          src={iconHeart}
           alt="Ícone de favorito"
           className={styles.iconBtn}
           onClick={() => setFavorite()}
         />
       </div>
-      <p className={styles.charDescription}>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel
-        convallis velit.
-      </p>
+      <p className={styles.charDescription}>{character?.description}</p>
     </div>
   );
 }
