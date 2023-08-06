@@ -15,7 +15,8 @@ const hash = md5
 
 export const getAllCharacters = async () => {
   const response = await fetch(
-    `${BASE_URL}?ts=${timestamp}&apikey=${PUBLIC_KEY}&hash=${hash}`
+    `${BASE_URL}?ts=${timestamp}&apikey=${PUBLIC_KEY}&hash=${hash}`,
+    { cache: 'force-cache', next: { revalidate: 86400000 } }
   );
 
   if (!response.ok) {

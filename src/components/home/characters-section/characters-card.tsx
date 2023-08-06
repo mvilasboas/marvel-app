@@ -3,6 +3,7 @@ import iconHeart from '../../../assets/icons/heart-icon.svg';
 import iconFilledHeart from '../../../assets/icons/filled-heart-icon.svg';
 import styles from './characters-styles.module.css';
 import { ICharacter } from '@/types/marvel';
+import limitString from '@/utils/utils';
 
 interface CharactersCardProps {
   character: ICharacter;
@@ -36,7 +37,7 @@ export default function CharactersCard({ character }: CharactersCardProps) {
           onClick={() => setFavorite()}
         />
       </div>
-      <p className={styles.charDescription}>{character?.description}</p>
+      <p className={styles.charDescription}>{limitString(character.description, 90)}</p>
     </div>
   );
 }
