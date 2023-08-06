@@ -1,16 +1,26 @@
+'use client';
+
+import { useContext, useEffect, useCallback } from 'react';
 import styles from './home-styles.module.css';
 import SearchInput from '../search-input';
 import CharactersSection from './characters-section/characters-section';
+import { MarvelContext } from '@/context/marvel-context';
+import { getAllCharacters } from '@/api/characters-api';
 
 export default function Home() {
-  // async function getMemberInfo(member) {
-  //   try {
-  //     const res = await fetch(`${baseAPI_URL}/users/${member}`);
-  //     renderInfoPanel(await res.json());
-  //   } catch (error) {
-  //     console.error(`Falha na requisição de getMemberInfo(): ${error.message}`);
-  //   }
-  // }
+  const { setCharacters } = useContext(MarvelContext);
+
+  const getCharacters = useCallback(async () => {
+    try {
+      setCharacters(await getAllCharacters());
+    } catch (error) {
+      console.error('Erro ao listar todos personagens');
+    }
+  }, []);
+
+  useEffect(() => {
+    getCharacters();
+  }, []);
 
   return (
     <section className={styles.homeContainer}>
