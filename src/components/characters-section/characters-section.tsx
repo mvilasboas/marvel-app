@@ -1,10 +1,10 @@
 'use client';
 
-import { useContext } from 'react';
-import Image from 'next/image';
-import heartFilledIcon from '../../../assets/icons/filled-heart-icon.svg';
 import styles from './characters-styles.module.css';
+import Image from 'next/image';
+import heartFilledIcon from '../../assets/icons/filled-heart-icon.svg';
 import CharactersCard from './characters-card';
+import { useContext } from 'react';
 import { MarvelContext } from '@/context/marvel-context';
 import { ICharacter } from '@/types/marvel';
 

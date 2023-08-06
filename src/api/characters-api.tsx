@@ -1,8 +1,6 @@
-'use client';
-
 import { Md5 } from 'ts-md5';
 
-const BASE_URL = 'https:gateway.marvel.com/v1/public/characters';
+const BASE_URL = 'https:gateway.marvel.com/v1/public/';
 const PUBLIC_KEY = 'e7e6ddd0450cd983336aec8c7a0d004a';
 const PRIVATE_KEY = '7e4825945eecc2a99f6430e185babcbb1b2c596f';
 const timestamp = new Date().getTime();
@@ -12,12 +10,13 @@ const hash = md5
   .appendStr(`${PRIVATE_KEY}`)
   .appendStr(`${PUBLIC_KEY}`)
   .end();
+const queryString = `ts=${timestamp}&apikey=${PUBLIC_KEY}&hash=${hash}`;
 
 export const getAllCharacters = async () => {
-  const response = await fetch(
-    `${BASE_URL}?ts=${timestamp}&apikey=${PUBLIC_KEY}&hash=${hash}`,
-    { cache: 'force-cache', next: { revalidate: 86400000 } }
-  );
+  const response = await fetch(`${BASE_URL}characters?${queryString}`, {
+    cache: 'force-cache',
+    next: { revalidate: 86400000 },
+  });
 
   if (!response.ok) {
     throw new Error('Não foi possível realizar integração com API da Marvel');
