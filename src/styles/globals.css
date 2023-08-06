@@ -23,8 +23,7 @@ body {
 }
 
 main {
-  display: flex;
-  justify-content: center;
+  display: block;
   min-height: calc(100vh - 82px);
 }
 

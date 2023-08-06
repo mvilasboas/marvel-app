@@ -2,6 +2,7 @@
   text-align: center;
   max-width: var(--max-width-container);
   padding: 182px 0px 0px;
+  margin: 0px auto;
 }
 
 .subtitle {
