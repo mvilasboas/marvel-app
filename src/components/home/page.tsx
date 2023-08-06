@@ -1,6 +1,6 @@
 'use client';
 
-import { useContext, useEffect, useCallback } from 'react';
+import { Suspense, useContext, useEffect, useCallback } from 'react';
 import styles from './home-styles.module.css';
 import SearchInput from '../search-input';
 import CharactersSection from './characters-section/characters-section';
@@ -30,7 +30,15 @@ export default function Home() {
         generosa porção de heróis e vilões!
       </p>
       <SearchInput />
-      <CharactersSection />
+      <Suspense
+        fallback={
+          <div style={{ margin: '0px auto', width: '100%' }}>
+            Carregando heróis...
+          </div>
+        }
+      >
+        <CharactersSection />
+      </Suspense>
     </section>
   );
 }
