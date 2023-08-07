@@ -1,0 +1,39 @@
+.homeContainer {
+  text-align: center;
+  max-width: var(--max-width-container);
+  padding: 182px 0px 0px;
+  margin: 0px auto;
+}
+
+.subtitle {
+  color: rgba(33, 33, 33, 0.6);
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 28px;
+  margin-top: 1.5rem;
+}
+
+/* ------------------------Mobile-------------------------- */
+
+@media (max-width: 700px) {
+  .homeContainer {
+    text-align: left;
+    padding: 60px 24px 0px;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    line-height: 20px;
+  }
+}
+
+/* Tablet and Smaller Desktop */
+@media (min-width: 601px) and (max-width: 1120px) {
+  .grid {
+    grid-template-columns: repeat(2, 50%);
+  }
+  
+  .homeContainer {
+      padding: 60px 24px 0px;
+  }
+}
