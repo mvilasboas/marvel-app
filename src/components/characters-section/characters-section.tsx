@@ -1,18 +1,13 @@
-
 import styles from './characters-styles.module.css';
 import Image from 'next/image';
 import heartFilledIcon from '../../assets/icons/filled-heart-icon.svg';
 import CharactersCard from './characters-card';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { MarvelContext } from '@/context/marvel-context';
 import { ICharacter } from '@/types/marvel';
 
 export default function CharactersSection() {
-  const { characters } = useContext(MarvelContext);
-  
-  const filterByFavorites = () => {
-    console.log('Só favoritos');
-  };
+  const { characters, setIsShowingFavorite } = useContext(MarvelContext);
 
   return (
     <div className={styles.cardContainer}>
@@ -27,7 +22,9 @@ export default function CharactersSection() {
         {characters.length > 0 && (
           <button
             className={styles.favoriteBtn}
-            onClick={() => filterByFavorites()}
+            onClick={() => {
+              setIsShowingFavorite((prev) => !prev);
+            }}
           >
             <Image
               priority
@@ -41,7 +38,7 @@ export default function CharactersSection() {
       </div>
       <div className={styles.listContainer}>
         {characters?.map((character: ICharacter) => (
-          <CharactersCard key={character?.id} character={character}/>
+          <CharactersCard key={character?.id} character={character} />
         ))}
       </div>
     </div>

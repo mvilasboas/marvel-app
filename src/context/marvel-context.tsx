@@ -9,6 +9,8 @@ interface MarvelContextProps {
   setFiltered: React.Dispatch<React.SetStateAction<string>>;
   favorite: ICharacter[];
   setFavorite: React.Dispatch<React.SetStateAction<ICharacter[] | []>>;
+  isShowingFavorite: boolean;
+  setIsShowingFavorite: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const MarvelContext = createContext<MarvelContextProps>({
@@ -18,6 +20,8 @@ export const MarvelContext = createContext<MarvelContextProps>({
   setFiltered: () => null,
   favorite: [],
   setFavorite: () => null,
+  isShowingFavorite: false,
+  setIsShowingFavorite: () => null,
 });
 
 export const MarvelContextProvider = ({
@@ -28,6 +32,7 @@ export const MarvelContextProvider = ({
   const [characters, setCharacters] = useState<ICharacter[] | []>([]);
   const [filtered, setFiltered] = useState<string>('');
   const [favorite, setFavorite] = useState<ICharacter[] | []>([]);
+  const [isShowingFavorite, setIsShowingFavorite] = useState<boolean>(false);
 
   return (
     <MarvelContext.Provider
@@ -38,6 +43,8 @@ export const MarvelContextProvider = ({
         setFiltered,
         favorite,
         setFavorite,
+        isShowingFavorite,
+        setIsShowingFavorite
       }}
     >
       {children}
