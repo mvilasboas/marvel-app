@@ -21,13 +21,13 @@ export default function CharactersCard({ character }: CharactersCardProps) {
   }, [favorite]);
   
   const handleFavorite = (param: ICharacter) => {
-    favorite.find((c) => c.id === param.id)
+    favorite?.find((c) => c.id === param.id)
       ? setFavorite(favorite.filter((c) => c.id !== param.id))
       : setFavorite((prev) => [...prev, param]);
   };
 
   const checkIfIsFavorite = (id: number): string => {
-    return favorite.find((c) => c.id === id) ? iconFilledHeart : iconHeart;
+    return favorite?.find((c) => c.id === id) ? iconFilledHeart : iconHeart;
   };
 
   return (
