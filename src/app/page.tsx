@@ -27,11 +27,11 @@ export default function Home() {
     } catch (error) {
       console.error('Erro ao listar todos personagens');
     }
-  }, []);
+  }, [setCharacters]);
 
   const getFavoriteList = useCallback(() => {
     setFavorite(JSON.parse(localStorage.getItem('ListOfFavoriteHeroes')!));
-  }, []);
+  }, [setFavorite]);
 
   useEffect(() => {
     getFavoriteList();
@@ -41,7 +41,7 @@ export default function Home() {
     } else {
       getCharacters(filtered, limit);
     }
-  }, [filtered, isShowingFavorite, limit]);
+  }, [getCharacters, setCharacters, getFavoriteList, filtered, isShowingFavorite, limit]);
 
   useEffect(() => {
     const iObserver = new IntersectionObserver((entries) => {
@@ -53,7 +53,7 @@ export default function Home() {
     iObserver.observe(document.querySelector('#observer')!);
 
     return () => iObserver.disconnect();
-  }, []);
+  }, [setLimit]);
 
   return (
     <section className={styles.homeContainer}>
