@@ -46,7 +46,7 @@ export default function CharactersCard({ character }: CharactersCardProps) {
           />
         </div>
         <p className={styles.charDescription}>
-          {limitString(character.description, 90)}
+          {limitString(character.description, 80)}
         </p>
       </div>
     </Link>

@@ -1,26 +1,30 @@
-'use client'
+'use client';
 
 import { Suspense, useContext, useEffect, useCallback } from 'react';
 import styles from './home-styles.module.css';
 import SearchInput from '../components/search-input';
 import CharactersSection from '../components/characters-section/characters-section';
 import { MarvelContext } from '@/context/marvel-context';
-import { getAllCharacters } from '@/api/characters-api';
+import { getAllCharacters, getCharacterByName } from '@/api/characters-api';
 
 export default function Home() {
-  const { setCharacters } = useContext(MarvelContext);
+  const { setCharacters, filtered } = useContext(MarvelContext);
 
-  const getCharacters = useCallback(async () => {
+  const getCharacters = useCallback(async (filtered: string) => {
     try {
-      setCharacters(await getAllCharacters());
+      if (filtered.trim() === '') {
+        setCharacters(await getAllCharacters());
+      } else {
+        setCharacters(await getCharacterByName(filtered));
+      }
     } catch (error) {
       console.error('Erro ao listar todos personagens');
     }
   }, []);
 
   useEffect(() => {
-    getCharacters();
-  }, []);
+    getCharacters(filtered);
+  }, [filtered]);
 
   return (
     <section className={styles.homeContainer}>

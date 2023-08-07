@@ -33,6 +33,14 @@ export const getAllCharacters = async () => {
   return handleResponse(response);
 };
 
+export const getCharacterByName = async (searchName: string) => {
+  const response = await fetch(
+    `${BASE_URL}characters?nameStartsWith=${searchName}&limit=20&${queryString}`
+  );
+
+  return handleResponse(response);
+};
+
 export const getComicsByCharacter = async (idCharacter: number) => {
   const response = await fetch(
     `${BASE_URL}characters/${idCharacter}/comics?limit=5&${queryString}`

@@ -2,14 +2,11 @@
 import Image from 'next/image';
 import styles from './component-styles.module.css';
 import searchIcon from '../assets/icons/search-icon.svg';
-import { useState } from 'react';
+import { useContext } from 'react';
+import { MarvelContext } from '@/context/marvel-context';
 
 export default function SearchInput() {
-  const [filtered, setFiltered] = useState<string>('');
-
-  // const handleChange = (event:React.FormEvent<HTMLInputElement>) => {
-  //   event.preventDefault();
-  // };
+  const { filtered, setFiltered } = useContext(MarvelContext);
 
   return (
     <div className={styles.inputSearchContainer}>
@@ -27,7 +24,6 @@ export default function SearchInput() {
           value={filtered}
           className={styles.inputSearch}
           onChange={(event) => setFiltered(event.target.value)}
-          // onKeyDown={handleChange}
         />
       </div>
     </div>
