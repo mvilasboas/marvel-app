@@ -1,4 +1,3 @@
-'use client';
 
 import styles from './characters-styles.module.css';
 import Image from 'next/image';

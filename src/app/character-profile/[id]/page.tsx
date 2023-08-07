@@ -1,10 +1,11 @@
-'use client';
+'use client'
 import { useContext } from 'react';
 import { MarvelContext } from '@/context/marvel-context';
 import Image from 'next/image';
 import backgroundImg from '@/assets/images/profile-background.png';
-import styles from '@/app/character-profile/profile-styles.module.css';
-import ProfileCard from '../profile-card';
+import styles from '@/components/profile-section/profile-styles.module.css';
+import ProfileCard from '@/components/profile-section/profile-card';
+import ComicsSection from '@/components/profile-section/comics-section';
 
 interface ProfileProps {
   params: {
@@ -28,6 +29,7 @@ export default function Profile({ params }: ProfileProps) {
           DESCUBRA TODOS OS QUADRINHOS DESTE PERSONAGEM
         </h1>
         <ProfileCard data={char} />
+        <ComicsSection idCharacter={char?.id} />
       </div>
     </section>
   );

@@ -4,7 +4,7 @@ import iconHeart from '../../assets/icons/heart-icon.svg';
 import iconFilledHeart from '../../assets/icons/filled-heart-icon.svg';
 import styles from './characters-styles.module.css';
 import { ICharacter } from '@/types/marvel';
-import limitString from '@/utils/utils';
+import { limitString } from '@/utils/utils';
 
 interface CharactersCardProps {
   character: ICharacter;

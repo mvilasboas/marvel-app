@@ -6,10 +6,11 @@ export interface ICharacter {
 }
 
 export interface IComics {
-  thumbnail: { path: string; extension: string };
+  id: number;
   title: string;
   modified: string;
   pageCount: number;
   variantDescription: string;
   description: string;
+  thumbnail: { path: string; extension: string };
 }

@@ -32,4 +32,8 @@
   .grid {
     grid-template-columns: repeat(2, 50%);
   }
+  
+  .homeContainer {
+      padding: 60px 24px 0px;
+  }
 }

@@ -141,4 +141,8 @@
   .grid {
     grid-template-columns: repeat(2, 50%);
   }
+  
+  .listContainer {
+    justify-content: space-around;
+  }
 }

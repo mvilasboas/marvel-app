@@ -1,4 +1,4 @@
-'use client';
+'use client'
 
 import { Suspense, useContext, useEffect, useCallback } from 'react';
 import styles from './home-styles.module.css';
