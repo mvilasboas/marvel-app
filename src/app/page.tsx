@@ -17,31 +17,43 @@ export default function Home() {
     setLimit,
   } = useContext(MarvelContext);
 
-  const getCharacters = useCallback(async (filtered: string, limit: number) => {
-    try {
-      if (filtered.trim() === '') {
-        setCharacters(await getAllCharacters(limit));
-      } else {
-        setCharacters(await getCharacterByName(filtered, limit));
+  const getCharacters = useCallback(
+    async (filtered: string, limit: number) => {
+      try {
+        if (filtered.trim() === '') {
+          setCharacters(await getAllCharacters(limit));
+        } else {
+          setCharacters(await getCharacterByName(filtered, limit));
+        }
+      } catch (error) {
+        console.error('Erro ao listar todos personagens');
       }
-    } catch (error) {
-      console.error('Erro ao listar todos personagens');
-    }
-  }, [setCharacters]);
+    },
+    [setCharacters]
+  );
 
   const getFavoriteList = useCallback(() => {
-    setFavorite(JSON.parse(localStorage.getItem('ListOfFavoriteHeroes')!));
+    const data = localStorage.getItem('ListOfFavoriteHeroes');
+    data ? setFavorite(JSON.parse(data)) : setFavorite([]);
   }, [setFavorite]);
 
   useEffect(() => {
     getFavoriteList();
 
     if (isShowingFavorite) {
-      setCharacters(JSON.parse(localStorage.getItem('ListOfFavoriteHeroes')!));
+      const data = localStorage.getItem('ListOfFavoriteHeroes');
+      data ? setCharacters(JSON.parse(data)) : setCharacters([]);
     } else {
       getCharacters(filtered, limit);
     }
-  }, [getCharacters, setCharacters, getFavoriteList, filtered, isShowingFavorite, limit]);
+  }, [
+    getCharacters,
+    setCharacters,
+    getFavoriteList,
+    filtered,
+    isShowingFavorite,
+    limit,
+  ]);
 
   useEffect(() => {
     const iObserver = new IntersectionObserver((entries) => {

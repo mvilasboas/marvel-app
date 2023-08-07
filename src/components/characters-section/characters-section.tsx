@@ -19,22 +19,20 @@ export default function CharactersSection() {
               : 'Encontrado 1 herói'
             : 'Nenhum herói encontrado'}
         </p>
-        {characters.length > 0 && (
-          <button
-            className={styles.favoriteBtn}
-            onClick={() => {
-              setIsShowingFavorite((prev) => !prev);
-            }}
-          >
-            <Image
-              priority
-              src={heartFilledIcon}
-              alt="Ícone de favoritos"
-              className={styles.heartIcon}
-            />
-            <span className={styles.favoriteTxt}>Somente favoritos</span>
-          </button>
-        )}
+        <button
+          className={styles.favoriteBtn}
+          onClick={() => {
+            setIsShowingFavorite((prev) => !prev);
+          }}
+        >
+          <Image
+            priority
+            src={heartFilledIcon}
+            alt="Ícone de favoritos"
+            className={styles.heartIcon}
+          />
+          <span className={styles.favoriteTxt}>Somente favoritos</span>
+        </button>
       </div>
       <div className={styles.listContainer}>
         {characters?.map((character: ICharacter) => (
