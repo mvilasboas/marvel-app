@@ -8,15 +8,21 @@ import { MarvelContext } from '@/context/marvel-context';
 import { getAllCharacters, getCharacterByName } from '@/api/characters-api';
 
 export default function Home() {
-  const { setCharacters, filtered, setFavorite, isShowingFavorite } =
-    useContext(MarvelContext);
+  const {
+    setCharacters,
+    filtered,
+    setFavorite,
+    isShowingFavorite,
+    limit,
+    setLimit,
+  } = useContext(MarvelContext);
 
-  const getCharacters = useCallback(async (filtered: string) => {
+  const getCharacters = useCallback(async (filtered: string, limit: number) => {
     try {
       if (filtered.trim() === '') {
-        setCharacters(await getAllCharacters());
+        setCharacters(await getAllCharacters(limit));
       } else {
-        setCharacters(await getCharacterByName(filtered));
+        setCharacters(await getCharacterByName(filtered, limit));
       }
     } catch (error) {
       console.error('Erro ao listar todos personagens');
@@ -24,20 +30,30 @@ export default function Home() {
   }, []);
 
   const getFavoriteList = useCallback(() => {
-    const data = localStorage.getItem('ListOfFavoriteHeroes');
-    data ? setFavorite(JSON.parse(data)) : setFavorite([]);
+    setFavorite(JSON.parse(localStorage.getItem('ListOfFavoriteHeroes')!));
   }, []);
 
   useEffect(() => {
     getFavoriteList();
 
     if (isShowingFavorite) {
-      const data = localStorage.getItem('ListOfFavoriteHeroes');
-      data ? setCharacters(JSON.parse(data)) : setCharacters([]);
+      setCharacters(JSON.parse(localStorage.getItem('ListOfFavoriteHeroes')!));
     } else {
-      getCharacters(filtered);
+      getCharacters(filtered, limit);
     }
-  }, [filtered, isShowingFavorite]);
+  }, [filtered, isShowingFavorite, limit]);
+
+  useEffect(() => {
+    const iObserver = new IntersectionObserver((entries) => {
+      if (entries.some((entry) => entry.isIntersecting)) {
+        setLimit((prev) => prev + 20);
+      }
+    });
+
+    iObserver.observe(document.querySelector('#observer')!);
+
+    return () => iObserver.disconnect();
+  }, []);
 
   return (
     <section className={styles.homeContainer}>

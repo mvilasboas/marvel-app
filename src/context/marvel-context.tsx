@@ -11,6 +11,8 @@ interface MarvelContextProps {
   setFavorite: React.Dispatch<React.SetStateAction<ICharacter[] | []>>;
   isShowingFavorite: boolean;
   setIsShowingFavorite: React.Dispatch<React.SetStateAction<boolean>>;
+  limit: number;
+  setLimit: React.Dispatch<React.SetStateAction<number>>;
 }
 
 export const MarvelContext = createContext<MarvelContextProps>({
@@ -22,6 +24,8 @@ export const MarvelContext = createContext<MarvelContextProps>({
   setFavorite: () => null,
   isShowingFavorite: false,
   setIsShowingFavorite: () => null,
+  limit: 20,
+  setLimit: () => null,
 });
 
 export const MarvelContextProvider = ({
@@ -33,6 +37,7 @@ export const MarvelContextProvider = ({
   const [filtered, setFiltered] = useState<string>('');
   const [favorite, setFavorite] = useState<ICharacter[] | []>([]);
   const [isShowingFavorite, setIsShowingFavorite] = useState<boolean>(false);
+  const [limit, setLimit] = useState<number>(20);
 
   return (
     <MarvelContext.Provider
@@ -44,7 +49,9 @@ export const MarvelContextProvider = ({
         favorite,
         setFavorite,
         isShowingFavorite,
-        setIsShowingFavorite
+        setIsShowingFavorite,
+        limit,
+        setLimit
       }}
     >
       {children}

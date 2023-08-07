@@ -24,18 +24,21 @@ const handleResponse = async (response: Response) => {
   return data.data.results;
 };
 
-export const getAllCharacters = async () => {
-  const response = await fetch(`${BASE_URL}characters?${queryString}`, {
-    cache: 'force-cache',
-    next: { revalidate: 86400000 },
-  });
+export const getAllCharacters = async (limit: number) => {
+  const response = await fetch(
+    `${BASE_URL}characters?limit=${limit}&${queryString}`,
+    {
+      cache: 'force-cache',
+      next: { revalidate: 86400000 },
+    }
+  );
 
   return handleResponse(response);
 };
 
-export const getCharacterByName = async (searchName: string) => {
+export const getCharacterByName = async (searchName: string, limit: number) => {
   const response = await fetch(
-    `${BASE_URL}characters?nameStartsWith=${searchName}&limit=20&${queryString}`
+    `${BASE_URL}characters?nameStartsWith=${searchName}&limit=${limit}&${queryString}`
   );
 
   return handleResponse(response);

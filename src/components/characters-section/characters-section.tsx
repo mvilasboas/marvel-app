@@ -2,7 +2,7 @@ import styles from './characters-styles.module.css';
 import Image from 'next/image';
 import heartFilledIcon from '../../assets/icons/filled-heart-icon.svg';
 import CharactersCard from './characters-card';
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { MarvelContext } from '@/context/marvel-context';
 import { ICharacter } from '@/types/marvel';
 
@@ -41,6 +41,7 @@ export default function CharactersSection() {
           <CharactersCard key={character?.id} character={character} />
         ))}
       </div>
+      <div id="observer" />
     </div>
   );
 }
