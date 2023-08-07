@@ -8,7 +8,7 @@ import { MarvelContext } from '@/context/marvel-context';
 import { getAllCharacters, getCharacterByName } from '@/api/characters-api';
 
 export default function Home() {
-  const { setCharacters, filtered } = useContext(MarvelContext);
+  const { setCharacters, filtered, setFavorite } = useContext(MarvelContext);
 
   const getCharacters = useCallback(async (filtered: string) => {
     try {
@@ -22,7 +22,13 @@ export default function Home() {
     }
   }, []);
 
+  const getFavoriteList = useCallback(() => {
+    const data = localStorage.getItem('ListOfFavoriteHeroes')
+      data ? setFavorite(JSON.parse(data)) : setFavorite([])
+  }, []);
+
   useEffect(() => {
+    getFavoriteList();
     getCharacters(filtered);
   }, [filtered]);
 
