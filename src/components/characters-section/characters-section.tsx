@@ -13,9 +13,9 @@ export default function CharactersSection() {
     <div className={styles.cardContainer}>
       <div className={styles.cardInfoWrapper}>
         <p className={styles.searchResult}>
-          {characters.length > 0
-            ? characters.length !== 1
-              ? `Encontrados ${characters.length} heróis`
+          {characters?.length > 0
+            ? characters?.length !== 1
+              ? `Encontrados ${characters?.length} heróis`
               : 'Encontrado 1 herói'
             : 'Nenhum herói encontrado'}
         </p>
