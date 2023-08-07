@@ -1,6 +1,6 @@
 import { Md5 } from 'ts-md5';
 
-const BASE_URL = 'https:gateway.marvel.com/v1/public/';
+const BASE_URL = ' https://gateway.marvel.com/v1/public/';
 const PUBLIC_KEY = 'e7e6ddd0450cd983336aec8c7a0d004a';
 const PRIVATE_KEY = '7e4825945eecc2a99f6430e185babcbb1b2c596f';
 
