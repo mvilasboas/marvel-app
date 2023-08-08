@@ -18,6 +18,7 @@ export default function Profile({ searchParams }: ProfileProps) {
   const char = characters.filter(
     (char) => char.id === parseInt(searchParams.id)
   )[0];
+  debugger;
 
   return (
     <section>
@@ -30,8 +31,12 @@ export default function Profile({ searchParams }: ProfileProps) {
         <h1 className={styles.title}>
           DESCUBRA TODOS OS QUADRINHOS DESTE PERSONAGEM
         </h1>
-        <ProfileCard data={char} />
-        <ComicsSection idCharacter={char?.id} />
+        {char && (
+          <>
+            <ProfileCard data={char} />
+            <ComicsSection idCharacter={char?.id} />
+          </>
+        )}
       </div>
     </section>
   );
