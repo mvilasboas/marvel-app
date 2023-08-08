@@ -43,8 +43,7 @@ src
 ├───api
 ├───app
 │   ├───character-profile
-│   │   ├───[id]
-│   │   ├───page (perfil)
+│   │   └───page (perfil)
 │   ├───page (home)
 │   ├───layout
 │   ├───not-found
