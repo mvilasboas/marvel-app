@@ -1,15 +1,13 @@
 import { getComicsByCharacter } from '@/api/characters-api';
-import { IComics } from '@/types/marvel';
+import { ICharacter, IComics } from '@/types/marvel';
 import ComicsCard from '@/components/profile-section/comics-card';
 
 interface ComicsSectionProps {
-  idCharacter: number;
+  data: ICharacter;
 }
 
-export default async function ComicsSection({
-  idCharacter,
-}: ComicsSectionProps) {
-  const comics = await getComicsByCharacter(idCharacter);
+export default async function ComicsSection({ data }: ComicsSectionProps) {
+  const comics = await getComicsByCharacter(data?.id);
 
   return (
     <>

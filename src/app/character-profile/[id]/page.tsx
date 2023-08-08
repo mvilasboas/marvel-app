@@ -8,16 +8,15 @@ import ProfileCard from '@/components/profile-section/profile-card';
 import ComicsSection from '@/components/profile-section/comics-section';
 
 interface ProfileProps {
-  searchParams: {
+  params: {
     id: string;
   };
 }
 
-export default function Profile({ searchParams }: ProfileProps) {
+export default function Profile({ params }: ProfileProps) {
+  const { id } = params;
   const { characters } = useContext(MarvelContext);
-  const char = characters.filter(
-    (char) => char.id === parseInt(searchParams.id)
-  )[0];
+  const char = characters.filter((char) => char.id === parseInt(id))[0];
 
   return (
     <section>
@@ -31,7 +30,7 @@ export default function Profile({ searchParams }: ProfileProps) {
           DESCUBRA TODOS OS QUADRINHOS DESTE PERSONAGEM
         </h1>
         <ProfileCard data={char} />
-        <ComicsSection idCharacter={char?.id} />
+        <ComicsSection data={char} />
       </div>
     </section>
   );

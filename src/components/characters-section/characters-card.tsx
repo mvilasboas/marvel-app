@@ -33,10 +33,7 @@ export default function CharactersCard({ character }: CharactersCardProps) {
   return (
     <div style={{ position: 'relative' }}>
       <Link
-        href={{
-          pathname: '/character-profile',
-          query: { id: character.id },
-        }}
+        href={`/character-profile/${character.id}`}
       >
         <div className={styles.card}>
           <Image
