@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import { useContext } from 'react';
 import { MarvelContext } from '@/context/marvel-context';
 import Image from 'next/image';
@@ -8,14 +8,17 @@ import ProfileCard from '@/components/profile-section/profile-card';
 import ComicsSection from '@/components/profile-section/comics-section';
 
 interface ProfileProps {
-  params: {
+  searchParams: {
     id: string;
   };
 }
 
-export default function Profile({ params }: ProfileProps) {
+export default function Profile({ searchParams }: ProfileProps) {
   const { characters } = useContext(MarvelContext);
-  const char = characters.filter((char) => char.id === parseInt(params.id))[0];
+  const char = characters.filter(
+    (char) => char.id === parseInt(searchParams.id)
+  )[0];
+  debugger;
 
   return (
     <section>
@@ -28,8 +31,12 @@ export default function Profile({ params }: ProfileProps) {
         <h1 className={styles.title}>
           DESCUBRA TODOS OS QUADRINHOS DESTE PERSONAGEM
         </h1>
-        <ProfileCard data={char} />
-        <ComicsSection idCharacter={char?.id} />
+        {char && (
+          <>
+            <ProfileCard data={char} />
+            <ComicsSection idCharacter={char?.id} />
+          </>
+        )}
       </div>
     </section>
   );

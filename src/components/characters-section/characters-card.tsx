@@ -35,9 +35,8 @@ export default function CharactersCard({ character }: CharactersCardProps) {
       <Link
         href={{
           pathname: '/character-profile',
-          query: { params: character.id },
+          query: { id: character.id },
         }}
-        as={`/character-profile/${character.id}`}
       >
         <div className={styles.card}>
           <Image

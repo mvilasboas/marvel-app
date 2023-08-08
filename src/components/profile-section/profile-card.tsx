@@ -17,8 +17,8 @@ export default function ProfileCard({ data }: ProfileCardProps) {
         height={212}
       />
       <div className={styles.dataWrapper}>
-        <span className={styles.profileName}>{data.name}</span>
-        <span className={styles.profileDesc}>{data.description}</span>
+        <span className={styles.profileName}>{data?.name}</span>
+        <span className={styles.profileDesc}>{data?.description}</span>
       </div>
     </div>
   );
