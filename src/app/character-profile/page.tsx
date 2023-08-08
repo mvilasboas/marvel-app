@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import { useContext } from 'react';
 import { MarvelContext } from '@/context/marvel-context';
 import Image from 'next/image';
@@ -8,14 +8,16 @@ import ProfileCard from '@/components/profile-section/profile-card';
 import ComicsSection from '@/components/profile-section/comics-section';
 
 interface ProfileProps {
-  params: {
+  searchParams: {
     id: string;
   };
 }
 
-export default function Profile({ params }: ProfileProps) {
+export default function Profile({ searchParams }: ProfileProps) {
   const { characters } = useContext(MarvelContext);
-  const char = characters.filter((char) => char.id === parseInt(params.id))[0];
+  const char = characters.filter(
+    (char) => char.id === parseInt(searchParams.id)
+  )[0];
 
   return (
     <section>
